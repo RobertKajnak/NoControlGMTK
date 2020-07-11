@@ -15,13 +15,20 @@ _global_script_class_icons={
 
 [application]
 
-config/name="No Control GMTK"
-run/main_scene="res://Interface/MainMenu.tscn"
+config/name="GMTK2020"
+run/main_scene="res://src/scenes/Garden.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://Global.gd"
+Global="*res://src/Global.gd"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [rendering]
 

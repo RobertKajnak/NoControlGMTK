@@ -6,6 +6,9 @@
 margin_right = 190.0
 margin_bottom = 20.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0

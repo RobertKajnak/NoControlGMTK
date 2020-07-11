@@ -10,13 +10,8 @@ func _ready():
 func _on_ButtonStart_pressed(to_load):
 	if to_load == 'exit':
 		get_tree().quit()
-	elif to_load == 'Options':
-		$"/root/Global".control_level += 1
-		print($"/root/Global".control_level)
-		return
 		
-	$CenterContainer/MainContainer/ButtonContainer/ButtonOptions/Label.text = str($"/root/Global".control_level)
-	#var _err = get_tree().change_scene(to_load)
+	var _err = get_tree().change_scene(to_load)
 	
 #%% Input handling
 func _unhandled_input(event):
