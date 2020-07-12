@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/ActionMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/Base.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://src/scenes/Agyas.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/scenes/Antenna.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/Lab.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/scenes/Lab.gd" type="Script" id=7]
 [ext_resource path="res://src/scenes/CommandProg.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Label.gd" type="Script" id=9]
 [ext_resource path="res://src/scenes/CommandProg.gd" type="Script" id=10]
@@ -70,6 +69,9 @@ margin_top = 16.0
 margin_right = 35.0
 margin_bottom = 41.0
 script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CommandProg" parent="Control" instance=ExtResource( 8 )]
 script = ExtResource( 10 )
@@ -83,7 +85,6 @@ position = Vector2( 667, 743 )
 [node name="Base" parent="." instance=ExtResource( 2 )]
 
 [node name="Lab" parent="." instance=ExtResource( 6 )]
-script = ExtResource( 7 )
 
 [node name="Antenna" parent="." instance=ExtResource( 5 )]
 
@@ -199,6 +200,7 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="show_action_menu" from="Antenna" to="ActionMenu" method="_on_Antenna_show_action_menu"]
 [connection signal="button_down" from="ActionMenu/TabContainer/Call to Action/Perform Action/NothingButton" to="ActionMenu/TabContainer/Call to Action/Perform Action/NothingButton" method="_on_NothingButton_button_down"]
 [connection signal="button_down" from="ActionMenu/TabContainer/Call to Action/Perform Action/PlantButton" to="ActionMenu/TabContainer/Call to Action/Perform Action/PlantButton" method="_on_PlantButton_button_down"]
 [connection signal="button_down" from="ActionMenu/TabContainer/Call to Action/Perform Action/BotButton" to="ActionMenu/TabContainer/Call to Action/Perform Action/BotButton" method="_on_BotButton_button_down"]

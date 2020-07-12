@@ -30,15 +30,14 @@ func take_damage(damage):
 		Global.kill_insect(self)
 	
 func _process(delta):
-	$HealthBar.value = health
-	$HealthBar.visible = health < max_health
-	
 	position = position.move_toward(target.global_position, delta * speed)	
 	if position.distance_to(target.global_position) < target.reaching_distance:
-		var remaining = target.damage_by(delta)
+		var remaining = target.damage_by(delta, self)
 		if remaining <= 0:
 			acquire_new_target()
 	
+	$HealthBar.value = health
+	$HealthBar.visible = health < max_health
 	add_buzz_movement(delta)
 
 func generate_starting_pos():
