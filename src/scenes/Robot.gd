@@ -4,6 +4,7 @@ signal planted(position)
 
 var has_plant = false
 var speed = 100
+var damage = 100
 
 func _ready():
 	print(Global.base_position)
@@ -16,21 +17,27 @@ func _process(delta):
 				position = position.move_toward(Global.base_position, delta * speed)
 				has_plant = position.distance_to(Global.base_position) < 10
 			else:
-				var closest_plant_space = get_closest_unplanted(position, Global.get_empty_plant_locations())
-				position = position.move_toward(closest_plant_space, delta * speed)
-				if position.distance_to(closest_plant_space) < 10:
-					has_plant = false
-					Global.perform_plant(closest_plant_space)
+				var closest_plant_space = get_closest(Global.get_empty_plant_locations())
+				if closest_plant_space != null:
+					position = position.move_toward(closest_plant_space.global_position, delta * speed)
+					if position.distance_to(closest_plant_space.global_position) < 10:
+						has_plant = false
+						closest_plant_space.start_grow()
+		"Fight":
+			var bogar = get_closest(Global.insect_data)
+			position = position.move_toward(bogar.position, delta * speed)
+			if position.distance_to(bogar.position) < 10:
+				bogar.take_damage(delta * damage)
 		var unrecognized:
 			print("Unrecognized action state: " + str (unrecognized))
-
+		
 # TODO need to actually perform the check if it is planted or not
-func get_closest_unplanted(robot_position, planting_positions):
-	var best_position = robot_position
+func get_closest(objects):
+	var best_plant = null
 	var best_distance = 999999999
-	for planting_position in planting_positions:
-		var distance = robot_position.distance_to(planting_position)
+	for unplanted in objects:
+		var distance = position.distance_to(unplanted.global_position)
 		if distance < best_distance:
 			best_distance = distance
-			best_position = planting_position
-	return best_position
+			best_plant = unplanted
+	return best_plant

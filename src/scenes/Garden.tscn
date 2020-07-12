@@ -1,13 +1,12 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/ActionMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/Antenna.gd" type="Script" id=2]
 [ext_resource path="res://assets/alap.png" type="Texture" id=3]
-[ext_resource path="res://assets/agyas.png" type="Texture" id=4]
+[ext_resource path="res://src/scenes/Agyas.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/antenna.png" type="Texture" id=5]
 [ext_resource path="res://assets/lab.png" type="Texture" id=6]
 [ext_resource path="res://assets/base.png" type="Texture" id=7]
-[ext_resource path="res://src/scenes/PlantSpot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Label.gd" type="Script" id=9]
 [ext_resource path="res://src/Base.gd" type="Script" id=10]
 [ext_resource path="res://src/closebutton.gd" type="Script" id=11]
@@ -23,9 +22,6 @@
 [ext_resource path="res://src/scenes/Label3.gd" type="Script" id=21]
 [ext_resource path="res://src/Global.gd" type="Script" id=22]
 [ext_resource path="res://src/scenes/Typed Font.tres" type="DynamicFont" id=23]
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 343, 114 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 88.3629
@@ -47,68 +43,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Agyas" type="Area2D" parent="."]
-position = Vector2( 1134, 198 )
+[node name="Agyas" parent="." instance=ExtResource( 4 )]
+position = Vector2( 936.443, 29.8103 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Agyas"]
-position = Vector2( 0, -9 )
-shape = SubResource( 4 )
+[node name="Agyas2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 724.204, 363.52 )
 
-[node name="Sprite" type="Sprite" parent="Agyas"]
-position = Vector2( 10, -28 )
-scale = Vector2( 0.184771, 0.158224 )
-texture = ExtResource( 4 )
-
-[node name="Agyas2" type="Area2D" parent="."]
-position = Vector2( 1030, 534 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Agyas2"]
-position = Vector2( 0, -9 )
-shape = SubResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="Agyas2"]
-position = Vector2( 11.6235, -9.17508 )
-scale = Vector2( 0.191065, 0.162939 )
-texture = ExtResource( 4 )
-
-[node name="Agyas3" type="Area2D" parent="."]
-position = Vector2( 1214, 878 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Agyas3"]
-position = Vector2( 0, -9 )
-shape = SubResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="Agyas3"]
-position = Vector2( 7.3735, -13.4251 )
-scale = Vector2( 0.194525, 0.179752 )
-texture = ExtResource( 4 )
-
-[node name="PlantSpot" parent="." instance=ExtResource( 8 )]
-position = Vector2( 873, 157 )
-
-[node name="PlantSpot2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1362, 157 )
-
-[node name="PlantSpot3" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1134, 157 )
-
-[node name="PlantSpot4" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1297, 534 )
-
-[node name="PlantSpot7" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1442, 852 )
-
-[node name="PlantSpot8" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1214, 861 )
-
-[node name="PlantSpot9" parent="." instance=ExtResource( 8 )]
-position = Vector2( 976, 852 )
-
-[node name="PlantSpot5" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1030, 525 )
-
-[node name="PlantSpot6" parent="." instance=ExtResource( 8 )]
-position = Vector2( 814, 525 )
+[node name="Agyas3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 964.476, 699.9 )
 
 [node name="Control" type="Control" parent="."]
 margin_left = 77.0

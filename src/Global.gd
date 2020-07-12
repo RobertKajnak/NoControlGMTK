@@ -1,8 +1,5 @@
 extends Node
 
-signal plant_planted(location)
-signal plant_eaten(location, size)
-
 var calories = 0
 var calorie_rate = 1
 
@@ -12,51 +9,44 @@ var base_position = "uninitialized"
 var eating_base = 0
 
 # A Dictionary from position to plant data (a number)
-var plant_data = {}
+var plant_data = []
 var insect_data = []
 
 # Function called when a robot needs a list of empty plant locations
 func get_empty_plant_locations():
 	var result = []
-	for loc in  plant_data.keys():
-		if plant_data[loc] < 1:
-			result = result + [loc]
+	for plant in plant_data:
+		if plant.growth_size <= 0:
+			result.append(plant)
 	return result
 	
-	
-# Procedure called when a robot puts a plant into the ground
-func perform_plant(location):
-	plant_data[location] = 1
-	emit_signal("plant_planted", location)
 	
 # Called each second by the timer to update calorie count
 func gather_calories():
 	var total_plant_value = 0
-	for val in Global.plant_data.values():
-		total_plant_value = total_plant_value + val
+	for plant in plant_data:
+		total_plant_value = total_plant_value + plant.growth_size
 	Global.calories = Global.calories + total_plant_value * calorie_rate
 	
 
 # Gets the already planted locaitons for the insects
 func get_plant_locations():
 	var result = []
-	for loc in plant_data.keys():
-		if plant_data[loc] > 0:
-			result = result + [loc]
+	for plant in plant_data:
+		if plant.growth_size > 0:
+			result.append(plant)
 	return result
 	
 
 func add_insect():
 	var insect:KinematicBody2D = load('res://src/scenes/Insect.tscn').instance()
 	get_node('/root/Node2D').add_child_below_node(get_node('/root/Node2D/Antenna'),insect)
-	print('Spawned bug at '+str(insect.position))
+	#print('Spawned bug at '+str(insect.position))
 	insect_data.append(insect)
 	
-	
-func eat_plant(location, delta):
-	if location in plant_data:
-		plant_data[location] -= delta/3.5
-		emit_signal("plant_eaten", location, plant_data[location])
+func kill_insect(insect):
+	insect_data.erase(insect)
+	insect.queue_free()
 	
 func add_base_eater():
 	eating_base += 1
