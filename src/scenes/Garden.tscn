@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/ActionMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/Base.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://src/scenes/Lab.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/scenes/CommandProg.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Label.gd" type="Script" id=9]
-[ext_resource path="res://src/scenes/CommandProg.gd" type="Script" id=10]
 [ext_resource path="res://src/closebutton.gd" type="Script" id=11]
 [ext_resource path="res://src/scenes/Robot.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/scenes/NothingButton.gd" type="Script" id=13]
@@ -65,7 +64,6 @@ margin_left = 489.0
 margin_top = 16.0
 margin_right = 714.0
 margin_bottom = 58.0
-script = ExtResource( 10 )
 
 [node name="Base" parent="." instance=ExtResource( 2 )]
 position = Vector2( 389, 700 )
