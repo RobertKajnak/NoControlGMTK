@@ -78,6 +78,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Robot Upgrades" type="VBoxContainer" parent="UpgradesContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -105,6 +106,12 @@ margin_right = 330.0
 margin_bottom = 203.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="ButtonMakeBot" type="Button" parent="UpgradesContainer/Robot Upgrades/UpgradeContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 [connection signal="input_event" from="." to="." method="_on_Lab_input_event"]
 [connection signal="pressed" from="UpgradesContainer/Plant Upgrades/UpgradeContainer/ButtonGrowthFactor" to="." method="_on_ButtonGrowthFactor_pressed"]
 [connection signal="button_down" from="UpgradesContainer/Plant Upgrades/UpgradeContainer/ButtonHealth" to="." method="_on_ButtonHealth_button_down"]
@@ -113,3 +120,4 @@ size_flags_vertical = 3
 [connection signal="pressed" from="UpgradesContainer/Plant Upgrades/UpgradeContainer/ButtonGermination" to="." method="_on_ButtonGermination_pressed"]
 [connection signal="button_down" from="UpgradesContainer/Robot Upgrades/UpgradeContainer/ButtonSpeed" to="." method="_on_ButtonSpeed_button_down"]
 [connection signal="button_down" from="UpgradesContainer/Robot Upgrades/UpgradeContainer/ButtonDamage" to="." method="_on_ButtonDamage_button_down"]
+[connection signal="button_up" from="UpgradesContainer/Robot Upgrades/UpgradeContainer/ButtonMakeBot" to="." method="_on_ButtonMakeBot_button_up"]

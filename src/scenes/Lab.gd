@@ -11,6 +11,7 @@ onready var butSpike = $"UpgradesContainer/Plant Upgrades/UpgradeContainer/Butto
 
 onready var butSpeed = $"UpgradesContainer/Robot Upgrades/UpgradeContainer/ButtonSpeed"
 onready var butDamage = $"UpgradesContainer/Robot Upgrades/UpgradeContainer/ButtonDamage"
+onready var butMake = $"UpgradesContainer/Robot Upgrades/UpgradeContainer/ButtonMakeBot"
 
 var costs
 var currentLevel
@@ -26,7 +27,8 @@ func _ready():
 		butSpike :'Spikiness: Level ',
 		
 		butSpeed : 'Speed: Level',
-		butDamage : 'Damage: Level'
+		butDamage : 'Damage: Level',
+		butMake : 'Bot Count: Level',
 	}
 	
 
@@ -39,6 +41,7 @@ func _ready():
 		
 		butSpeed : 500,
 		butDamage : 200,
+		butMake : 500
 	}
 	
 	currentLevel = {
@@ -49,7 +52,8 @@ func _ready():
 		butSpike : 0,
 		
 		butSpeed : 1,
-		butDamage : 1
+		butDamage : 1,
+		butMake : 1
 	}
 	
 	update_display_name()
@@ -118,3 +122,6 @@ func _on_ButtonDamage_button_down():
 		for robot in Global.robot_data:
 			robot.damage += 20
 
+
+func _on_ButtonMakeBot_button_up():
+	print("button pressed")
