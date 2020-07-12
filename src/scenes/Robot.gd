@@ -16,7 +16,7 @@ func _process(delta):
 				position = position.move_toward(Global.base_position, delta * speed)
 				has_plant = position.distance_to(Global.base_position) < 10
 			else:
-				var closest_plant_space = get_closest_unplanted(position, Global.get_plant_locations())
+				var closest_plant_space = get_closest_unplanted(position, Global.get_empty_plant_locations())
 				position = position.move_toward(closest_plant_space, delta * speed)
 				if position.distance_to(closest_plant_space) < 10:
 					has_plant = false

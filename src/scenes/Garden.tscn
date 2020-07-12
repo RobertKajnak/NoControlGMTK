@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://src/ActionMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/Antenna.gd" type="Script" id=2]
@@ -18,9 +18,14 @@
 [ext_resource path="res://src/scenes/PlantButton.gd" type="Script" id=16]
 [ext_resource path="res://src/scenes/FightButton.gd" type="Script" id=17]
 [ext_resource path="res://src/scenes/Ticker.gd" type="Script" id=18]
-[ext_resource path="res://src/Global.gd" type="Script" id=19]
+[ext_resource path="res://src/scenes/InsectTimer.gd" type="Script" id=19]
 [ext_resource path="res://src/scenes/Timer.gd" type="Script" id=20]
 [ext_resource path="res://src/scenes/Label3.gd" type="Script" id=21]
+[ext_resource path="res://src/Global.gd" type="Script" id=22]
+[ext_resource path="res://src/scenes/Typed Font.tres" type="DynamicFont" id=23]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 343, 114 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 88.3629
@@ -32,11 +37,8 @@ extents = Vector2( 83, 64 )
 radius = 59.0
 height = 36.0
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 343, 114 )
-
 [node name="Node2D" type="Node2D"]
-script = ExtResource( 19 )
+script = ExtResource( 22 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
@@ -44,6 +46,114 @@ texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Agyas" type="Area2D" parent="."]
+position = Vector2( 1134, 198 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agyas"]
+position = Vector2( 0, -9 )
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Agyas"]
+position = Vector2( 10, -28 )
+scale = Vector2( 0.184771, 0.158224 )
+texture = ExtResource( 4 )
+
+[node name="Agyas2" type="Area2D" parent="."]
+position = Vector2( 1030, 534 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agyas2"]
+position = Vector2( 0, -9 )
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Agyas2"]
+position = Vector2( 11.6235, -9.17508 )
+scale = Vector2( 0.191065, 0.162939 )
+texture = ExtResource( 4 )
+
+[node name="Agyas3" type="Area2D" parent="."]
+position = Vector2( 1214, 878 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agyas3"]
+position = Vector2( 0, -9 )
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Agyas3"]
+position = Vector2( 7.3735, -13.4251 )
+scale = Vector2( 0.194525, 0.179752 )
+texture = ExtResource( 4 )
+
+[node name="PlantSpot" parent="." instance=ExtResource( 8 )]
+position = Vector2( 873, 157 )
+
+[node name="PlantSpot2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1362, 157 )
+
+[node name="PlantSpot3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1134, 157 )
+
+[node name="PlantSpot4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1297, 534 )
+
+[node name="PlantSpot7" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1442, 852 )
+
+[node name="PlantSpot8" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1214, 861 )
+
+[node name="PlantSpot9" parent="." instance=ExtResource( 8 )]
+position = Vector2( 976, 852 )
+
+[node name="PlantSpot5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1030, 525 )
+
+[node name="PlantSpot6" parent="." instance=ExtResource( 8 )]
+position = Vector2( 814, 525 )
+
+[node name="Control" type="Control" parent="."]
+margin_left = 77.0
+margin_top = 16.0
+margin_right = 117.0
+margin_bottom = 56.0
+rect_scale = Vector2( 1.71683, 1.77583 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = -44.8501
+margin_top = -9.00985
+margin_right = 40.1499
+margin_bottom = 4.99015
+rect_scale = Vector2( 0.942875, 1.00678 )
+text = "Calories: TBD"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = -45.0
+margin_top = 16.0
+margin_right = 35.0
+margin_bottom = 41.0
+script = ExtResource( 14 )
+
+[node name="Label3" type="Label" parent="Control"]
+margin_left = -44.8501
+margin_top = 34.3501
+margin_right = -4.85006
+margin_bottom = 48.3501
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Robot" parent="." instance=ExtResource( 12 )]
+position = Vector2( 709, 172 )
+
+[node name="Robot2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 667, 743 )
 
 [node name="Base" type="Area2D" parent="."]
 position = Vector2( 352, 513 )
@@ -81,42 +191,6 @@ shape = SubResource( 3 )
 position = Vector2( -21, -2 )
 scale = Vector2( 0.263759, 0.328871 )
 texture = ExtResource( 5 )
-
-[node name="Agyas" type="Area2D" parent="."]
-position = Vector2( 1134, 198 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Agyas"]
-position = Vector2( 0, -9 )
-shape = SubResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="Agyas"]
-position = Vector2( 10, -28 )
-scale = Vector2( 0.184771, 0.158224 )
-texture = ExtResource( 4 )
-
-[node name="Agyas2" type="Area2D" parent="."]
-position = Vector2( 1030, 534 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Agyas2"]
-position = Vector2( 0, -9 )
-shape = SubResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="Agyas2"]
-position = Vector2( 11.6235, -9.17508 )
-scale = Vector2( 0.191065, 0.162939 )
-texture = ExtResource( 4 )
-
-[node name="Agyas3" type="Area2D" parent="."]
-position = Vector2( 1214, 878 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Agyas3"]
-position = Vector2( 0, -9 )
-shape = SubResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="Agyas3"]
-position = Vector2( 7.3735, -13.4251 )
-scale = Vector2( 0.194525, 0.179752 )
-texture = ExtResource( 4 )
 
 [node name="ActionMenu" type="Node2D" parent="."]
 position = Vector2( 238, 90 )
@@ -199,78 +273,37 @@ script = ExtResource( 11 )
 [node name="Timer" type="Timer" parent="ActionMenu"]
 script = ExtResource( 20 )
 
-[node name="PlantSpot" parent="." instance=ExtResource( 8 )]
-position = Vector2( 873, 157 )
-
-[node name="PlantSpot2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1362, 157 )
-
-[node name="PlantSpot3" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1134, 157 )
-
-[node name="PlantSpot4" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1297, 534 )
-
-[node name="PlantSpot7" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1442, 852 )
-
-[node name="PlantSpot8" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1214, 861 )
-
-[node name="PlantSpot9" parent="." instance=ExtResource( 8 )]
-position = Vector2( 976, 852 )
-
-[node name="PlantSpot5" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1030, 525 )
-
-[node name="PlantSpot6" parent="." instance=ExtResource( 8 )]
-position = Vector2( 814, 525 )
-
-[node name="Control" type="Control" parent="."]
-margin_left = 77.0
-margin_top = 16.0
-margin_right = 117.0
-margin_bottom = 56.0
-rect_scale = Vector2( 1.71683, 1.77583 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Control"]
-margin_left = -44.8501
-margin_top = -9.00985
-margin_right = 40.1499
-margin_bottom = 4.99015
-rect_scale = Vector2( 0.942875, 1.00678 )
-text = "Calories: TBD"
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="Control"]
-margin_left = -45.0
-margin_top = 16.0
-margin_right = 35.0
-margin_bottom = 41.0
-script = ExtResource( 14 )
-
-[node name="Label3" type="Label" parent="Control"]
-margin_left = -44.8501
-margin_top = 34.3501
-margin_right = -4.85006
-margin_bottom = 48.3501
-script = ExtResource( 21 )
-
-[node name="Robot" parent="." instance=ExtResource( 12 )]
-position = Vector2( 709, 172 )
-
-[node name="Robot2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 667, 743 )
-
 [node name="Ticker" type="Timer" parent="."]
 autostart = true
 script = ExtResource( 18 )
+
+[node name="InsectTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource( 19 )
+
+[node name="LabelLose" type="Label" parent="."]
+visible = false
+modulate = Color( 0.964706, 0.14902, 0.14902, 1 )
+margin_left = 68.4855
+margin_top = 246.489
+margin_right = 1770.49
+margin_bottom = 723.489
+rect_scale = Vector2( 1.06132, 1.18109 )
+custom_fonts/font = ExtResource( 23 )
+text = "The Base has been raided by hungry insects. All the seed and plant stores have been consumed
+The colonists arriving on the planet will starve after a few weeks.
+
+Mission failed.
+
+This was the last drop to incite political unrest.
+
+The colonization of mars has been set back by decades.
+
+MISSION FAILED"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="show_action_menu" from="Antenna" to="ActionMenu" method="_on_Antenna_show_action_menu"]
 [connection signal="button_down" from="ActionMenu/TabContainer/Call to Action/Perform Action/NothingButton" to="ActionMenu/TabContainer/Call to Action/Perform Action/NothingButton" method="_on_NothingButton_button_down"]
 [connection signal="button_down" from="ActionMenu/TabContainer/Call to Action/Perform Action/PlantButton" to="ActionMenu/TabContainer/Call to Action/Perform Action/PlantButton" method="_on_PlantButton_button_down"]
@@ -280,3 +313,4 @@ script = ExtResource( 18 )
 [connection signal="hide_action_menu" from="ActionMenu/TabContainer/Call to Action/closebutton" to="ActionMenu" method="_on_closebutton_hide_action_menu"]
 [connection signal="timeout" from="ActionMenu/Timer" to="Control/Label3" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Ticker" to="Ticker" method="_on_Ticker_timeout"]
+[connection signal="timeout" from="InsectTimer" to="InsectTimer" method="_on_InsectTimer_timeout"]
