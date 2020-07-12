@@ -1,15 +1,20 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/scenes/CommandProg.gd" type="Script" id=1]
 
 [node name="CommandProg" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-margin_right = 212.0
-margin_bottom = 14.0
+[node name="Current" type="Label" parent="."]
+margin_top = 7.0
+margin_right = 91.0
+margin_bottom = 21.0
+text = "Current State: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
