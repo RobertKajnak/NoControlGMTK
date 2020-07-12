@@ -58,16 +58,21 @@ func _process(delta):
 	var nw = Vector2(-biggest, -biggest)
 	var n = Vector2(0, -biggest)
 	var ne = Vector2(biggest, -biggest)
+	var m = Vector2(0,0)
 	
 	var closest = s
 	var closest_dist = 100
-	var list = [e, se, s, sw, w, nw, n, ne]
+	var list = [e, se, s, sw, w, nw, n, ne, m]
 	for dir in list:
 		if movement_vector.distance_to(dir) < closest_dist:
 			closest_dist = movement_vector.distance_to(dir)
 			closest = dir
 	
-	if closest == se:
+	if closest == m:
+		#print("True M")
+		$Robot_S.flip_h = false
+		$Robot_S.visible = true	
+	elif closest == se:
 		#print("True NW")
 		$Robot_NE.flip_h = true
 		$Robot_NE.visible = true	
