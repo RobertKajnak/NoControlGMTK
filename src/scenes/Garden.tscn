@@ -162,7 +162,7 @@ autostart = true
 script = ExtResource( 18 )
 
 [node name="InsectTimer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 9.0
 autostart = true
 script = ExtResource( 19 )
 

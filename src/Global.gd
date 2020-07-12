@@ -24,6 +24,7 @@ var plant_spikes = 0
 var robot_speed = 100 + rand_range(-50, 50)
 var robot_damage = 100
 
+
 # Function called when a robot needs a list of empty plant locations
 func get_empty_plant_locations():
 	var result = []
@@ -54,6 +55,8 @@ func add_insect(attack = 1, health = 1):
 	var insect:KinematicBody2D = load('res://src/scenes/Insect.tscn').instance()
 	get_node('/root/Node2D').add_child_below_node(get_node('/root/Node2D/Antenna'),insect)
 	#print('Spawned bug at '+str(insect.position))
+	insect.max_health *= health
+	insect.damage_coeff *= attack
 	insect_data.append(insect)
 	
 func kill_insect(insect):

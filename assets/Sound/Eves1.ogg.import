@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Eves1.ogg-db2690a01554c242d2289510ece1c301.oggstr"
+
+[deps]
+
+source_file="res://assets/Sound/Eves1.ogg"
+dest_files=[ "res://.import/Eves1.ogg-db2690a01554c242d2289510ece1c301.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

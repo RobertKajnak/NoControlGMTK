@@ -28,6 +28,13 @@ func _process(delta):
 				if closest_plant_space != null:
 					position = position.move_toward(closest_plant_space.global_position, delta * speed)
 					if position.distance_to(closest_plant_space.global_position) < 10:
+						var as_sound = randi()%3
+						if as_sound == 0:
+							$"AudioÁsás1".play()
+						elif as_sound == 1:
+							$"AudioÁsás2".play()
+						else:
+							$"AudioÁsás3".play()
 						has_plant = false
 						closest_plant_space.start_grow()
 		"Fight":

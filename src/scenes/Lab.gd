@@ -67,6 +67,7 @@ func apply_effect(source):
 		Global.calories -= costs[source]
 		currentLevel[source] += 1
 		update_display_name()
+		$AudioUpgrade.play()
 		return true
 	return false
 	
@@ -83,13 +84,13 @@ func _on_ButtonResistance_pressed():
 	if apply_effect(butRes):
 		if Global.plant_resistance >= 0.3:
 			Global.plant_resistance *= 0.9
-		
+		update_display_name()
 
 func _on_ButtonHealth_button_down():
 	if apply_effect(butHealth):
 		if Global.plant_health_bonus == 0:
 			Global.plant_health_bonus += 0.0001
-
+		update_display_name()
 		#if Global.plant_health_bonus == 0.5:
 		#	Global.plant_germination += 0.7
 		#	currentLevel[butGerm] = 'Mutation 危険！'
@@ -97,12 +98,13 @@ func _on_ButtonHealth_button_down():
 func _on_ButtonSpikes_pressed():
 	if apply_effect(butSpike):
 		Global.plant_spikes += 2
+		update_display_name()
 
 
 func _on_ButtonGermination_pressed():
 	if apply_effect(butGerm):
 		Global.plant_germination += 0.05
-	
+		update_display_name()
 	
 
 func _on_Lab_input_event(viewport, event, shape_idx):
@@ -116,6 +118,7 @@ func _on_ButtonSpeed_button_down():
 		for robot in Global.robot_data:
 			robot.speed += 20
 		costs[butSpeed] += 50
+		update_display_name()
 	
 
 func _on_ButtonDamage_button_down():
@@ -123,6 +126,9 @@ func _on_ButtonDamage_button_down():
 		Global.robot_damage += 20
 		for robot in Global.robot_data:
 			robot.damage += 20
+			
+			
+		update_display_name()
 
 
 func _on_ButtonMakeBot_button_up():

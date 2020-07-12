@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Bogar Kill 3.ogg-976700cdf98ea251c6b39ab7bf1e12fc.oggstr"
+
+[deps]
+
+source_file="res://assets/Sound/Bogar Kill 3.ogg"
+dest_files=[ "res://.import/Bogar Kill 3.ogg-976700cdf98ea251c6b39ab7bf1e12fc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
