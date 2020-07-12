@@ -7,9 +7,10 @@ var speed = 100 + rand_range(-50, 50)
 var damage = 100
 
 func _ready():
-	print(Global.base_position)
+	Global.robot_data.append(self)
 
 func _process(delta):
+	$Confusion.visible = false
 	match Global.action_state:
 		"Nothing": pass
 		"Plant":
@@ -24,10 +25,13 @@ func _process(delta):
 						has_plant = false
 						closest_plant_space.start_grow()
 		"Fight":
-			var bogar = get_closest(Global.insect_data)
-			position = position.move_toward(bogar.position, delta * speed)
-			if position.distance_to(bogar.position) < 10:
-				bogar.take_damage(delta * damage)
+			if Global.insect_data.empty():
+				$Confusion.visible = true
+			else:
+				var bogar = get_closest(Global.insect_data)
+				position = position.move_toward(bogar.position, delta * speed)
+				if position.distance_to(bogar.position) < 10:
+					bogar.take_damage(delta * damage)
 		var unrecognized:
 			print("Unrecognized action state: " + str (unrecognized))
 		

@@ -34,7 +34,7 @@ func _process(delta):
 	$HealthBar.visible = health < max_health
 	
 	if position.distance_to(target.global_position) < target.reaching_distance:
-		var remaining = target.damage_by(delta)
+		var remaining = target.damage_by(delta, self)
 		if remaining <= 0:
 			acquire_new_target()
 	else:
@@ -43,8 +43,6 @@ func _process(delta):
 		var new_x = position.x
 	
 		$Animation.flip_h = not old_x > new_x
-		
-	
 	add_buzz_movement(delta)
 
 func generate_starting_pos():

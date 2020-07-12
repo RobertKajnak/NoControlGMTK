@@ -17,3 +17,14 @@ shape = SubResource( 1 )
 position = Vector2( 14.75, -8.25001 )
 scale = Vector2( 0.0926966, 0.105429 )
 texture = ExtResource( 2 )
+
+[node name="Confusion" type="Label" parent="."]
+margin_left = -6.0
+margin_top = -56.0
+margin_right = 25.0
+margin_bottom = -42.0
+rect_scale = Vector2( 1.56522, 1.54531 )
+text = "???"
+__meta__ = {
+"_edit_use_anchors_": false
+}

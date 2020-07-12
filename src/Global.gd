@@ -1,6 +1,6 @@
 extends Node
 
-var calories = 0
+var calories = 10000
 var calorie_rate = 1
 
 var base_position = "uninitialized"
@@ -11,12 +11,20 @@ var eating_base = 0
 # A Dictionary from position to plant data (a number)
 var plant_data = []
 var insect_data = []
+var robot_data = []
+
+#%% Stats
+var plant_health_bonus = 0
+var plant_resistance = 1
+var plant_speed = 2
+var plant_germination = 0
+var plant_spikes = 0
 
 # Function called when a robot needs a list of empty plant locations
 func get_empty_plant_locations():
 	var result = []
 	for plant in plant_data:
-		if plant.growth_size <= 0:
+		if plant.growth_size <= 0 and not plant.not_plantable:
 			result.append(plant)
 	return result
 	
