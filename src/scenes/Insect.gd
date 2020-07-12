@@ -4,13 +4,18 @@ signal planted(position)
 
 var eating_base = false
 var speed = 100
-var health = 100
+var max_health = 100
+var health = max_health
 var target = position
 var offset_buzz = 0
 
 func _ready():
 	position = generate_starting_pos()
 	target = aquire_target()
+	$HealthBar.min_value = 0
+	$HealthBar.max_value = max_health
+	$HealthBar.value = health
+	$HealthBar.visible = false
 	
 func aquire_target():
 	target = get_closest_planted()
@@ -32,6 +37,8 @@ func take_damage(damage):
 		Global.kill_insect(self)
 	
 func _process(delta):
+	$HealthBar.value = health
+	$HealthBar.visible = health < max_health
 	if not eating_base:
 		position = position.move_toward(target.global_position, delta * speed)
 		
@@ -45,7 +52,7 @@ func _process(delta):
 func generate_starting_pos():
 	var quadrant = randi()%3
 	var x = 0
-	var y =0
+	var y = 0
 	if quadrant == 0:
 		x = rand_range(800,2000)
 		y = rand_range(-50,-20)
