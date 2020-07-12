@@ -199,7 +199,7 @@ margin_right = 271.0
 margin_bottom = 227.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Fight Bot"
+text = "Fight Bugs"
 script = ExtResource( 17 )
 
 [node name="closebutton" type="Button" parent="ActionMenu/TabContainer/Call to Action"]
