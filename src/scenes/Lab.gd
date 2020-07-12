@@ -124,4 +124,5 @@ func _on_ButtonDamage_button_down():
 
 
 func _on_ButtonMakeBot_button_up():
-	print("button pressed")
+	var robot: KinematicBody2D = load('res://src/scenes/Robot.tscn').instance()
+	get_node('/root/Node2D').add_child_below_node(get_node('/root/Node2D/Antenna'), robot)

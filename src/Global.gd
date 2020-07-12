@@ -3,7 +3,7 @@ extends Node
 var calories = 2000
 var calorie_rate = 1
 
-var base_position = "uninitialized"
+var base_position = Vector2(0,0)
 
 #Number of bugs eating the stores inside the base
 var eating_base = 0

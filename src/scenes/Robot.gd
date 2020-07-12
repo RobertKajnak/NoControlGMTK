@@ -8,6 +8,7 @@ var damage = 100
 
 func _ready():
 	Global.robot_data.append(self)
+	position = Global.base_position
 
 func _process(delta):
 	$Confusion.visible = false
