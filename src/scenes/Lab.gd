@@ -31,13 +31,13 @@ func _ready():
 	
 
 	costs = {
-		butGerm : 1000,
-		butGrow : 100,
-		butRes : 100,
-		butHealth : 100,
-		butSpike : 500,
+		butGerm : 2000,
+		butGrow : 300,
+		butRes : 200,
+		butHealth : 200,
+		butSpike : 700,
 		
-		butSpeed : 300,
+		butSpeed : 500,
 		butDamage : 200,
 	}
 	
@@ -56,7 +56,7 @@ func _ready():
 		
 func update_display_name():
 	for elem in button_names.keys():
-		elem.text = button_names[elem] + str(currentLevel[elem])
+		elem.text = button_names[elem] + str(currentLevel[elem]) + ' (' + str(costs[elem]) + ')'
 
 func apply_effect(source):
 	if Global.calories - costs[source] > 0:
@@ -69,23 +69,26 @@ func apply_effect(source):
 func _on_ButtonGrowthFactor_pressed():
 	if apply_effect(butGrow):
 		if Global.plant_speed <= 0.2:
-			Global.plant_germination = 0.7
-			currentLevel[butGerm] = 'Mutation 危険！'
+			pass
+			#Global.plant_germination = 0.7
+			#currentLevel[butGerm] = 'Mutation 危険！'
 		else:
 			Global.plant_speed -= 0.05
 			
 func _on_ButtonResistance_pressed():
 	if apply_effect(butRes):
-		Global.plant_resistance *= 0.9
-
+		if Global.plant_resistance >= 0.3:
+			Global.plant_resistance *= 0.9
+		
 
 func _on_ButtonHealth_button_down():
 	if apply_effect(butHealth):
 		if Global.plant_health_bonus == 0:
-			Global.plant_health_bonus += .1
-		if Global.plant_health_bonus == 0.5:
-			Global.plant_germination += 0.7
-			currentLevel[butGerm] = 'Mutation 危険！'
+			Global.plant_health_bonus += 0.0001
+
+		#if Global.plant_health_bonus == 0.5:
+		#	Global.plant_germination += 0.7
+		#	currentLevel[butGerm] = 'Mutation 危険！'
 
 func _on_ButtonSpikes_pressed():
 	if apply_effect(butSpike):
@@ -96,8 +99,7 @@ func _on_ButtonGermination_pressed():
 	if apply_effect(butGerm):
 		Global.plant_germination += 0.05
 	
-
-
+	
 
 func _on_Lab_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and not event.is_pressed():
@@ -107,7 +109,8 @@ func _on_Lab_input_event(viewport, event, shape_idx):
 func _on_ButtonSpeed_button_down():
 	if apply_effect(butSpeed):
 		for robot in Global.robot_data:
-			robot.speed += 50
+			robot.speed += 20
+		costs[butSpeed] += 50
 	
 
 func _on_ButtonDamage_button_down():

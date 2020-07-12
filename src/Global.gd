@@ -1,6 +1,6 @@
 extends Node
 
-var calories = 10000
+var calories = 2000
 var calorie_rate = 1
 
 var base_position = "uninitialized"
@@ -46,7 +46,7 @@ func get_plant_locations():
 	return result
 	
 
-func add_insect():
+func add_insect(attack = 1, health = 1):
 	var insect:KinematicBody2D = load('res://src/scenes/Insect.tscn').instance()
 	get_node('/root/Node2D').add_child_below_node(get_node('/root/Node2D/Antenna'),insect)
 	#print('Spawned bug at '+str(insect.position))

@@ -7,6 +7,7 @@ var max_health = 100
 var health = max_health
 var target = position
 var offset_buzz = 0
+var damage_coeff = 1
 
 func _ready():
 	position = generate_starting_pos()
@@ -34,7 +35,7 @@ func _process(delta):
 	$HealthBar.visible = health < max_health
 	
 	if position.distance_to(target.global_position) < target.reaching_distance:
-		var remaining = target.damage_by(delta, self)
+		var remaining = target.damage_by(delta * damage_coeff, self)
 		if remaining <= 0:
 			acquire_new_target()
 	else:
