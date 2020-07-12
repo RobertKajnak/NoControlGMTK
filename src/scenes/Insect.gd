@@ -16,6 +16,7 @@ func _ready():
 	$HealthBar.max_value = max_health
 	$HealthBar.value = health
 	$HealthBar.visible = false
+	$AudioHumm.play()
 	
 func acquire_new_target():
 	var closest_planted = get_closest_planted()
@@ -29,6 +30,10 @@ func take_damage(damage):
 	health = health - damage
 	if health < 0:
 		Global.kill_insect(self)
+		if randi()%2==1:
+			$AudioDie1.play()
+		else:
+			$AudioDie2.play()
 	
 func _process(delta):
 	$HealthBar.value = health
@@ -37,6 +42,11 @@ func _process(delta):
 	if position.distance_to(target.global_position) < target.reaching_distance:
 		var remaining = target.damage_by(delta * damage_coeff, self)
 		if remaining <= 0:
+			if randi()%2<1:
+				print('playing')
+				$AudioEves1.play()
+			else:
+				$AudioEves2.play()
 			acquire_new_target()
 	else:
 		var old_x = position.x

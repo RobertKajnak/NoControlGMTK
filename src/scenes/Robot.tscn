@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/scenes/Robot.gd" type="Script" id=1]
 [ext_resource path="res://assets/robot_n.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://assets/robot_s.png" type="Texture" id=4]
 [ext_resource path="res://assets/robot_e.png" type="Texture" id=5]
 [ext_resource path="res://assets/robot_ne.png" type="Texture" id=6]
+[ext_resource path="res://assets/Sound/Asas4.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/Sound/Asas2.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/Sound/Asas3.ogg" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 21 )
@@ -52,3 +55,12 @@ text = "???"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioÁsás1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="AudioÁsás2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[node name="AudioÁsás3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
