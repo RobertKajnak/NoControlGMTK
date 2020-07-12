@@ -1,33 +1,27 @@
 extends Area2D
 
 var possible_states = []
-var growth_size = 0
+var growth_size = 0 # the stage of the plant
+var reaching_distance = 10 # Used by bugs to see if they are touching the plant
 
 func _ready():
-	# register position so robots and bugs know where plant positions are
-	# also the 0 means that there is no plant there yet
-	
-	$Plant_1.visible = false
-	$Plant_2.visible = false
-	$Plant_3.visible = false
-	$Plant_4.visible = false
-	$Plant_5.visible = false
-	$Plant_6.visible = false
-	
 	possible_states = [$Plant_1,$Plant_2,$Plant_3,$Plant_4,$Plant_5,$Plant_6]
+	for sprite in possible_states:
+		sprite.visible = false
+	
 	Global.plant_data.append(self)
-
 
 func start_grow():
 	growth_size = 1
 	$Plant_1.visible = true
 	$Timer.start()
 
-func be_eaten(delta):
-	growth_size -= delta
+func damage_by(damage):
+	growth_size -= damage
 	if growth_size<=0:
 		$Timer.stop()
 	update_size()
+	return growth_size
 
 func update_size():
 	for i in range(len(possible_states)):

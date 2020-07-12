@@ -8,7 +8,3 @@ func _ready():
 			
 			get_node('.').add_child_below_node(get_node('./Sprite'),plant)
 			plant.position = Vector2(90+x*130+randi()%55,65+75*y+randi()%35)
-			
-			plant.start_grow()
-			
-

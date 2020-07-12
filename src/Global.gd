@@ -47,11 +47,7 @@ func add_insect():
 func kill_insect(insect):
 	insect_data.erase(insect)
 	insect.queue_free()
-	
-func add_base_eater():
-	eating_base += 1
-	if eating_base>10:
-		get_node('/root/Node2D/LabelLose').visible = true
+
 		
 # Possible states: 
 # 1 Nothing
