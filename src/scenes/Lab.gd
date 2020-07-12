@@ -26,9 +26,9 @@ func _ready():
 		butHealth : 'Health: Level ',
 		butSpike :'Spikiness: Level ',
 		
-		butSpeed : 'Speed: Level',
-		butDamage : 'Damage: Level',
-		butMake : 'Bot Count: Level',
+		butSpeed : 'Speed: Level ',
+		butDamage : 'Damage: Level ',
+		butMake : 'Make Robot: Active: ',
 	}
 	
 
@@ -41,7 +41,7 @@ func _ready():
 		
 		butSpeed : 500,
 		butDamage : 200,
-		butMake : 500
+		butMake : 1000
 	}
 	
 	currentLevel = {
@@ -112,6 +112,7 @@ func _on_Lab_input_event(viewport, event, shape_idx):
 
 func _on_ButtonSpeed_button_down():
 	if apply_effect(butSpeed):
+		Global.robot_speed += 20
 		for robot in Global.robot_data:
 			robot.speed += 20
 		costs[butSpeed] += 50
@@ -119,10 +120,15 @@ func _on_ButtonSpeed_button_down():
 
 func _on_ButtonDamage_button_down():
 	if apply_effect(butDamage):
+		Global.robot_damage += 20
 		for robot in Global.robot_data:
 			robot.damage += 20
 
 
 func _on_ButtonMakeBot_button_up():
-	var robot: KinematicBody2D = load('res://src/scenes/Robot.tscn').instance()
-	get_node('/root/Node2D').add_child_below_node(get_node('/root/Node2D/Antenna'), robot)
+	if apply_effect(butMake):
+		var robot: KinematicBody2D = load('res://src/scenes/Robot.tscn').instance()
+		get_node('/root/Node2D').add_child_below_node(get_node('/root/Node2D/Base'), robot)
+
+		costs[butMake] = int(costs[butMake] *1.7)
+		update_display_name()

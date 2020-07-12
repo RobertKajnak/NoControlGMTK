@@ -20,6 +20,10 @@ var plant_speed = 10
 var plant_germination = 0
 var plant_spikes = 0
 
+#%% Robot stats
+var robot_speed = 100 + rand_range(-50, 50)
+var robot_damage = 100
+
 # Function called when a robot needs a list of empty plant locations
 func get_empty_plant_locations():
 	var result = []
@@ -80,3 +84,4 @@ func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST: 
 		# For android
 		get_tree().quit()
+

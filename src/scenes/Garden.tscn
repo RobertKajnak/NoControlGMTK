@@ -75,10 +75,11 @@ __meta__ = {
 [node name="CommandProg" parent="Control" instance=ExtResource( 8 )]
 script = ExtResource( 10 )
 
+[node name="Base" parent="." instance=ExtResource( 2 )]
+position = Vector2( 389.375, 539.697 )
+
 [node name="Robot" parent="." instance=ExtResource( 12 )]
 position = Vector2( 709, 534 )
-
-[node name="Base" parent="." instance=ExtResource( 2 )]
 
 [node name="Lab" parent="." instance=ExtResource( 6 )]
 

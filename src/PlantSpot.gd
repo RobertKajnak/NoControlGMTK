@@ -26,7 +26,6 @@ func start_grow():
 	$Timer.start()
 
 func damage_by(damage, damager):
-	print(damage * resistance)
 	growth_size -=  max(0, damage * resistance - health_buff)
 	damager.take_damage(damage * spikes)
 	if growth_size<=0:
@@ -41,8 +40,6 @@ func update_size():
 			possible_states[i].visible = true
 		else:
 			possible_states[i].visible = false
-	if growth_size>=6:
-		print(growth_size)
 	
 func _on_Timer_timeout():
 	growth_size = min(growth_size + 1,5.9)

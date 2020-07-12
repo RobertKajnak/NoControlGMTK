@@ -3,12 +3,14 @@ extends KinematicBody2D
 signal planted(position)
 
 var has_plant = false
-var speed = 100 + rand_range(-50, 50)
-var damage = 100
+var speed :float
+var damage :float
 
 func _ready():
 	Global.robot_data.append(self)
 	position = Global.base_position
+	speed = Global.robot_speed + rand_range(-50, 50)
+	damage = Global.robot_damage 
 
 func _process(delta):
 	$Confusion.visible = false
