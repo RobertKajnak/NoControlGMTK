@@ -16,7 +16,7 @@ var robot_data = []
 #%% Stats
 var plant_health_bonus = 0
 var plant_resistance = 1
-var plant_speed = 2
+var plant_speed = 10
 var plant_germination = 0
 var plant_spikes = 0
 

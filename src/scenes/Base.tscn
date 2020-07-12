@@ -14,11 +14,6 @@ script = ExtResource( 1 )
 position = Vector2( 0, 21 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 3.05176e-05, 0 )
-scale = Vector2( 0.409352, 0.422408 )
-texture = ExtResource( 2 )
-
 [node name="HealthBar" type="ProgressBar" parent="."]
 margin_left = -180.0
 margin_top = -123.0
@@ -27,3 +22,8 @@ margin_bottom = -102.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 3.05176e-05, 0 )
+scale = Vector2( 0.409352, 0.422408 )
+texture = ExtResource( 2 )

@@ -18,8 +18,8 @@ func _ready():
 
 func start_grow():
 	growth_size = 1
-	resistance = Global.plant_health_bonus
-	health_buff = Global.plant_resistance
+	resistance = Global.plant_resistance
+	health_buff = Global.plant_health_bonus
 	spikes = Global.plant_spikes
 	$Plant_1.visible = true
 	$Timer.wait_time = Global.plant_speed
