@@ -26,7 +26,8 @@ func start_grow():
 	$Timer.start()
 
 func damage_by(damage, damager):
-	growth_size -=  max(0, damage * resistance -health_buff)
+	print(damage * resistance)
+	growth_size -=  max(0, damage * resistance - health_buff)
 	damager.take_damage(damage * spikes)
 	if growth_size<=0:
 		$Timer.stop()
