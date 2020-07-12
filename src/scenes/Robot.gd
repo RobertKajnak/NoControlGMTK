@@ -11,6 +11,9 @@ func _ready():
 
 func _process(delta):
 	$Confusion.visible = false
+	var old_x = position.x
+	var old_y = position.y
+	
 	match Global.action_state:
 		"Nothing": pass
 		"Plant":
@@ -34,7 +37,70 @@ func _process(delta):
 					bogar.take_damage(delta * damage)
 		var unrecognized:
 			print("Unrecognized action state: " + str (unrecognized))
+	
+	var new_x = position.x
+	var new_y = position.y
+	
+	$Robot_E.visible = false
+	$Robot_N.visible = false
+	$Robot_S.visible = false
+	$Robot_SE.visible = false
+	$Robot_NE.visible = false
+	
+	var biggest = max(abs(old_x - new_x), abs(old_y - new_y))
+	var movement_vector = Vector2(old_x - new_x, old_y - new_y)
+	
+	var e = Vector2(biggest, 0)
+	var se = Vector2(biggest, biggest)
+	var s = Vector2(0, biggest)
+	var sw = Vector2(-biggest, biggest)
+	var w = Vector2(-biggest, 0)
+	var nw = Vector2(-biggest, -biggest)
+	var n = Vector2(0, -biggest)
+	var ne = Vector2(biggest, -biggest)
+	
+	var closest = s
+	var closest_dist = 100
+	var list = [e, se, s, sw, w, nw, n, ne]
+	for dir in list:
+		if movement_vector.distance_to(dir) < closest_dist:
+			closest_dist = movement_vector.distance_to(dir)
+			closest = dir
+	
+	if closest == se:
+		#print("True NW")
+		$Robot_NE.flip_h = true
+		$Robot_NE.visible = true	
+	elif closest == ne:
+		#print("NE")
+		$Robot_SE.flip_h = true
+		$Robot_SE.visible = true
+	elif closest == e:
+		#print("True E")
+		$Robot_E.flip_h = true
+		$Robot_E.visible = true
+	elif closest == sw:
+		#print("True NE")
+		$Robot_NE.flip_h = false
+		$Robot_NE.visible = true
+	elif closest == nw:
+		#print("True SE")
+		$Robot_SE.flip_h = false
+		$Robot_SE.visible = true
+	elif closest == w:
+		#print("True E")
+		$Robot_E.flip_h = false
+		$Robot_E.visible = true
+	elif closest == s:
+		#print("True N")
+		$Robot_N.flip_h = false
+		$Robot_N.visible = true
+	else:
+		#print("True S")
+		$Robot_S.flip_h = true
+		$Robot_S.visible = true
 		
+	
 # TODO need to actually perform the check if it is planted or not
 func get_closest(objects):
 	var best_plant = null
