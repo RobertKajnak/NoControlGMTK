@@ -1,14 +1,15 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/ActionMenu.gd" type="Script" id=1]
-[ext_resource path="res://src/Antenna.gd" type="Script" id=2]
+[ext_resource path="res://src/scenes/Base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/alap.png" type="Texture" id=3]
 [ext_resource path="res://src/scenes/Agyas.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/antenna.png" type="Texture" id=5]
-[ext_resource path="res://assets/lab.png" type="Texture" id=6]
-[ext_resource path="res://assets/base.png" type="Texture" id=7]
+[ext_resource path="res://src/scenes/Antenna.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/scenes/Lab.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/scenes/Lab.gd" type="Script" id=7]
+[ext_resource path="res://src/scenes/CommandProg.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Label.gd" type="Script" id=9]
-[ext_resource path="res://src/Base.gd" type="Script" id=10]
+[ext_resource path="res://src/scenes/CommandProg.gd" type="Script" id=10]
 [ext_resource path="res://src/closebutton.gd" type="Script" id=11]
 [ext_resource path="res://src/scenes/Robot.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/scenes/NothingButton.gd" type="Script" id=13]
@@ -19,19 +20,8 @@
 [ext_resource path="res://src/scenes/Ticker.gd" type="Script" id=18]
 [ext_resource path="res://src/scenes/InsectTimer.gd" type="Script" id=19]
 [ext_resource path="res://src/scenes/Timer.gd" type="Script" id=20]
-[ext_resource path="res://src/scenes/Label3.gd" type="Script" id=21]
 [ext_resource path="res://src/Global.gd" type="Script" id=22]
 [ext_resource path="res://src/scenes/Typed Font.tres" type="DynamicFont" id=23]
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 88.3629
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 83, 64 )
-
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 59.0
-height = 36.0
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 22 )
@@ -81,15 +71,8 @@ margin_right = 35.0
 margin_bottom = 41.0
 script = ExtResource( 14 )
 
-[node name="Label3" type="Label" parent="Control"]
-margin_left = -44.8501
-margin_top = 34.3501
-margin_right = -4.85006
-margin_bottom = 48.3501
-script = ExtResource( 21 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CommandProg" parent="Control" instance=ExtResource( 8 )]
+script = ExtResource( 10 )
 
 [node name="Robot" parent="." instance=ExtResource( 12 )]
 position = Vector2( 709, 172 )
@@ -97,42 +80,12 @@ position = Vector2( 709, 172 )
 [node name="Robot2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 667, 743 )
 
-[node name="Base" type="Area2D" parent="."]
-position = Vector2( 352, 513 )
-script = ExtResource( 10 )
+[node name="Base" parent="." instance=ExtResource( 2 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Base"]
-position = Vector2( 0, 21 )
-shape = SubResource( 1 )
+[node name="Lab" parent="." instance=ExtResource( 6 )]
+script = ExtResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="Base"]
-position = Vector2( 3.05176e-05, 0 )
-scale = Vector2( 0.409352, 0.422408 )
-texture = ExtResource( 7 )
-
-[node name="Lab" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lab"]
-position = Vector2( 556, 852 )
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Lab"]
-position = Vector2( 556, 820 )
-scale = Vector2( 0.215332, 0.2104 )
-texture = ExtResource( 6 )
-
-[node name="Antenna" type="Area2D" parent="."]
-position = Vector2( 598, 246 )
-script = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Antenna"]
-position = Vector2( 0, 19 )
-shape = SubResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="Antenna"]
-position = Vector2( -21, -2 )
-scale = Vector2( 0.263759, 0.328871 )
-texture = ExtResource( 5 )
+[node name="Antenna" parent="." instance=ExtResource( 5 )]
 
 [node name="ActionMenu" type="Node2D" parent="."]
 position = Vector2( 238, 90 )
@@ -246,13 +199,11 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="show_action_menu" from="Antenna" to="ActionMenu" method="_on_Antenna_show_action_menu"]
 [connection signal="button_down" from="ActionMenu/TabContainer/Call to Action/Perform Action/NothingButton" to="ActionMenu/TabContainer/Call to Action/Perform Action/NothingButton" method="_on_NothingButton_button_down"]
 [connection signal="button_down" from="ActionMenu/TabContainer/Call to Action/Perform Action/PlantButton" to="ActionMenu/TabContainer/Call to Action/Perform Action/PlantButton" method="_on_PlantButton_button_down"]
 [connection signal="button_down" from="ActionMenu/TabContainer/Call to Action/Perform Action/BotButton" to="ActionMenu/TabContainer/Call to Action/Perform Action/BotButton" method="_on_BotButton_button_down"]
 [connection signal="button_down" from="ActionMenu/TabContainer/Call to Action/Perform Action/FightButton" to="ActionMenu/TabContainer/Call to Action/Perform Action/FightButton" method="_on_FightButton_button_down"]
 [connection signal="button_down" from="ActionMenu/TabContainer/Call to Action/closebutton" to="ActionMenu/TabContainer/Call to Action/closebutton" method="_on_closebutton_button_down"]
 [connection signal="hide_action_menu" from="ActionMenu/TabContainer/Call to Action/closebutton" to="ActionMenu" method="_on_closebutton_hide_action_menu"]
-[connection signal="timeout" from="ActionMenu/Timer" to="Control/Label3" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Ticker" to="Ticker" method="_on_Ticker_timeout"]
 [connection signal="timeout" from="InsectTimer" to="InsectTimer" method="_on_InsectTimer_timeout"]
